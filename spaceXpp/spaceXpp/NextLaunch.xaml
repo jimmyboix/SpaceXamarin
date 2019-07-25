@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 mc:Ignorable="d"
+			 x:Class="spaceXpp.NextLaunch" Title="Next Launch">
+
+    <StackLayout>
+        <ActivityIndicator Color="Red" IsRunning="true" x:Name="Spinner" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="3" />
+        <ScrollView>
+            <StackLayout x:Name="nextLaunchFrame" IsVisible="False">
+                <Frame HasShadow="True" CornerRadius="15" Margin="15" BackgroundColor="Silver" >
+                    <Grid ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label FontSize="Medium" FontAttributes="Bold" Grid.Row="0"  TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding mission_name}" />
+                                    <Span Text=" (" />
+                                    <Span Text="{Binding flight_number}" />
+                                    <Span Text=")" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="{Binding launch_date_utc}"  Grid.Row="1" TextColor="Black"></Label>
+                        <Label Text="{Binding details}" FontSize="Medium"  Grid.Row="2"  Margin="0,0,0,10" TextColor="Black"></Label>
+                    </Grid>
+                </Frame>
+                <Frame HasShadow="True" CornerRadius="15" Margin="15,-5,15,15" BackgroundColor="Silver" >
+                    <Grid ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label FontSize="Small" Grid.Row="0"  TextColor="Black" Text="Rocket Name:" Grid.Column="0" />
+                        <Label FontSize="Medium" Grid.Row="0"  TextColor="Black" Text="{Binding rocket.rocket_name} " Grid.Column="1" />
+                        <Label FontSize="Small" Grid.Row="1"  TextColor="Black" Text="Launch Site:" Grid.Column="0" />
+                        <Label FontSize="Medium" Grid.Row="1"  TextColor="Black" Text="{Binding launch_site.site_name_long} " Grid.Column="1" />
+                    </Grid>
+                </Frame>
+                <Frame HasShadow="True" CornerRadius="15" Margin="15,-5,15,10" BackgroundColor="Silver" >
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label FontSize="Small"   TextColor="Black" Text="Payloads:" Margin="0,0,0,10" Grid.Row="0" VerticalOptions="FillAndExpand" />
+                        <StackLayout  Grid.Row="1"
+				BindableLayout.ItemsSource="{Binding rocket.second_stage.payloads}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout
+							Orientation="Horizontal"
+							HorizontalOptions="FillAndExpand">
+                                        <Grid BackgroundColor="WhiteSmoke" Padding="10" HorizontalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="ID:" TextColor="Black" FontSize="Default" Grid.Column="0" Grid.Row="0" />
+                                            <Label Text="Type:" TextColor="Black"   FontSize="Default" Grid.Column="0"  Grid.Row="1" />
+                                            <Label Text="Orbit:" TextColor="Black"   FontSize="Default" Grid.Column="0" Grid.Row="2"  />
+                                            <Label Text="Weight (kg):" TextColor="Black"   FontSize="Default" Grid.Column="0" Grid.Row="3"  />
+
+                                            <Label Text="{Binding payload_id }" TextColor="Black" FontSize="Default" Grid.Column="1" Grid.Row="0" />
+                                            <Label Text="{Binding payload_type}" TextColor="Black"   FontSize="Default" Grid.Column="1"  Grid.Row="1" />
+                                            <Label Text="{Binding orbit}" TextColor="Black"   FontSize="Default" Grid.Column="1" Grid.Row="2"  />
+                                            <Label Text="{Binding payload_mass_kg}" TextColor="Black"   FontSize="Default" Grid.Column="1" Grid.Row="3"  />
+                                        </Grid>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>
