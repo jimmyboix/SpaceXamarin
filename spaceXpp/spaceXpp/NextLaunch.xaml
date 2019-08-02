@@ -4,7 +4,7 @@
 			 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
-			 x:Class="spaceXpp.NextLaunch" Title="Next Launch">
+			 x:Class="spaceXpp.NextLaunch" Title="Next">
 
     <StackLayout>
         <ActivityIndicator Color="Red" IsRunning="true" x:Name="Spinner" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="3" />

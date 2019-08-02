@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="spaceXpp.About" Title="About"  x:Name="AboutPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame HasShadow="True" CornerRadius="15" Margin="15" BackgroundColor="DodgerBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Grid ColumnSpacing="10" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="SpaceFax App is built by James Hendrie" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                 Grid.Row="0" />
+                    <Label Text="All data is brought to you by open source project https://github.com/r-spacex/SpaceX-API" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                Grid.Row="1" />
+                    <Label Text="Please try our website: " TextColor="White" FontSize="Medium" HorizontalTextAlignment="Center"
+                Grid.Row="2" />
+                    <Label Text="SpaceFax.xyz" Grid.Row="3" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GoSite" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label HorizontalTextAlignment="Center" Text="DISCLAIMER: The creator and maintainer of this app has no affiliation with SpaceX. The content herein should be considered for educational purposes only. Any imagery is public domain." TextColor="White" FontSize="Micro"
+                Grid.Row="4" />
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

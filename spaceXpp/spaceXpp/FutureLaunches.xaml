@@ -1,22 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:converters="clr-namespace:spaceXpp"
-			 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-			 x:Class="spaceXpp.PastLaunches" Title="Past" x:Name="PastLaunchesPage">
-    <ContentPage.Resources>
-        <converters:SuccessColorConverter x:Key="SuccessColorConverter" />
-    </ContentPage.Resources>
+             x:Class="spaceXpp.FutureLaunches" Title="Upcoming"  x:Name="FutureLaunchesPage">
+
     <StackLayout>
         <ActivityIndicator Color="Red" IsRunning="true" x:Name="Spinner" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="3" />
         <ListView x:Name="LaunchesListView" IsVisible="False" SelectionMode="None" HasUnevenRows="True"  CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame HasShadow="True" CornerRadius="15" Margin="15" BackgroundColor="{Binding launch_success, Converter={StaticResource SuccessColorConverter}}">
+                        <Frame HasShadow="True" CornerRadius="15" Margin="15" BackgroundColor="DarkCyan">
                             <Grid ColumnSpacing="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -26,17 +22,10 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <ffimageloading:CachedImage
-			                        WidthRequest="100" HeightRequest="100"
-			                        DownsampleToViewSize="true"
-			                        Source = "{Binding links.mission_patch_small}" Aspect="AspectFit" Grid.Column="0" Grid.RowSpan="3">
-                                </ffimageloading:CachedImage>
-
-                                <Label FontSize="Medium" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" TextColor="White" >
+                                <Label FontSize="Medium" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" TextColor="White" >
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding mission_name}" />
@@ -46,8 +35,8 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Text="{Binding launch_date_utc}"  Grid.Row="1" Grid.Column="1" TextColor="White"></Label>
-                                <Label Text="{Binding details, TargetNullValue='Launch Details Incoming...'}"  Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" TextColor="White"></Label>
+                                <Label Text="{Binding launch_date_utc}"  Grid.Row="1" Grid.Column="0" TextColor="White"></Label>
+                                <Label Text="{Binding detailsSafe}"  Grid.Row="2" Grid.Column="0" Margin="0,0,0,10" TextColor="White"></Label>
                             </Grid>
                         </Frame>
                     </ViewCell>
@@ -56,8 +45,7 @@
         </ListView>
         <AbsoluteLayout HeightRequest="30" Margin="0,10,0,10" BackgroundColor="red" Padding="0">
             <ImageButton Source="uparrow.png" Aspect="AspectFit" Padding="10" CornerRadius="25" BackgroundColor="SlateGray" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95,.95,40,40" Clicked="ScrollUp_Clicked">
-             </ImageButton>
+            </ImageButton>
         </AbsoluteLayout>
     </StackLayout>
-  
 </ContentPage>

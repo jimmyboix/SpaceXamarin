@@ -148,5 +148,19 @@ namespace spaceXpp
         public Timeline timeline { get; set; }
         public object crew { get; set; }
 
+        public String detailsSafe
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(details))
+                {
+                    return "Launch Details Incoming...";
+                }
+                else
+                {
+                    return details;
+                }
+            }
+        }
     }
-   }
+}

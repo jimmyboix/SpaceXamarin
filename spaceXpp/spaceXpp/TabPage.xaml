@@ -5,8 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:spaceXpp"
             mc:Ignorable="d"
-             x:Class="spaceXpp.TabPage">
+             x:Class="spaceXpp.TabPage" BackgroundColor="WhiteSmoke" BarTextColor="white" BarBackgroundColor="red" >
   
     <local:PastLaunches />
     <local:NextLaunch />
+    <local:FutureLaunches />
+    <local:About />
 </TabbedPage>
